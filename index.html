@@ -11,11 +11,40 @@
         .hero-banner {
             background: linear-gradient(135deg, rgba(243, 232, 255, 0.9), rgba(216, 180, 254, 0.9));
         }
-    </style>
+    
+    @keyframes fadeOut {
+                from {opacity: 1; transform: translateY(0);}
+                to {opacity: 0; transform: translateY(-20px);}
+            }
+
+            .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
+            .fade-out { animation: fadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
+
+            .page-tab {transition: opacity 0.3s ease, transform 0.3s ease;}
+            button, .tab-btn, .enter-btn {transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;cursor: pointer;}
+            button:hover, .tab-btn:hover, .enter-btn:hover { transform: translateY(-2px);filter: brightness(1.05);box-shadow: 0 4px 12px rgba(99, 20, 173, 0.15);}
+            button:active, .tab-btn:active, .enter-btn:active {transform: translateY(1px);}
+            .pop-box, .content-section {transition: transform 0.3s ease, box-shadow 0.3s ease;}
+            .pop-box:hover {transform: translateY(-3px);box-shadow: 0 6px 16px rgba(216, 180, 254, 0.3); }
+            .fit-img {transition: transform 0.4s ease;}
+            .fit-img:hover {transform: scale(1.02);}
+            a { transition: color 0.2s ease;}
+        </style> <!-- USED GEMINI FOR ANIMATION -->
 </head>
 <body>
     
 <div class="site-container">
+
+    <!-- STARTING SCREEN -->
+    <div id="start-screen">
+        <h1>Welcome to <br>SYJ's Portfolio ✦</h1>
+        <p>Click below to enter Ysa's portfolio space.</p>
+        <img src="https://media1.tenor.com/m/q2fUipZNALQAAAAC/mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="display: block; margin: 10px auto; max-width: 50%; border-radius: 13px;">
+        <button class="enter-btn" onclick="enterMainPage()">Enter Portfolio ✨</button>
+    </div>
+
+    <!-- MAIN PORTFOLIO CONTENT  -->
+    <div id="main-content" style="display: none;">
 
         <!-- Navigation Bar Functionality -->
         <nav class="site-nav">
@@ -24,7 +53,7 @@
             <button onclick="switchTab('interests')" id="nav-interests" class="tab-btn">Interests</button>
         </nav>
 
-    <!-- INLINE CSS -->
+        <!-- INLINE CSS -->
         <!-- Header -->
         <div class="site-header" style="border-bottom: 2px dashed #d8b4fe; padding-bottom: 12px; margin-bottom: 16px;">
             <h1 style="color: #6314ad; font-size: 1.6rem; margin-bottom: 4px;">WEBPROG</h1>
@@ -36,12 +65,11 @@
             <div class="content-section">
                 <h2>About Me</h2>
                 <img src="https://scontent.fmnl33-1.fna.fbcdn.net/v/t39.30808-6/871081062_2991859327873293_2549634724851727010_n.avif?stp=dst-avif&cstp=mx800x600&ctp=s800x600&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFIxlIDZT2EMvGsVIkSnGfNpYtbgBjDUs6li1uAGMNSzjIw-3bV8ybSy5Rv2Iwp5VQcuQhT5VnLe1Ets7KRAZEd&_nc_ohc=65dZuhAGJqIQ7kNvwFa370a&_nc_oc=AdpW5ayr9zyhfoJ7S1uJPJCaEpVt3rUIT0ZNUOQMC9Ehz460AD75DirCOZ_1Ys2Suqc&_nc_zt=23&_nc_ht=scontent.fmnl33-1.fna&_nc_gid=iNabMtQpccz_qGgwwAkiEQ&_nc_ss=7b2a8&oh=00_AQQRPjetpiDGuVz_TyKSJ35K52ig9aqPMMWRL4GYzC1ikw&oe=6AF25791" 
-                alt="My Picture" class="fit-img" style="width: 200px; height: 200px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px;">
+                alt="My Picture" class="fit-img" style="width: 200px; height: 200px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px; display: block;">
                 <p>Hello! I'm Ysa, a second-year BSIT student at Asia Pacific College, web developer, and Notion Campus Leader who likes arts, conversing, and coding!</p>
             </div>
 
-        <img src="https://media1.tenor.com/m/wBWsWVL7EL8AAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img">
-
+            <img src="https://media1.tenor.com/m/wBWsWVL7EL8AAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="display: block; margin: 10px auto; max-width: 100%; border-radius: 8px;">
 
             <div class="pop-box">
                 <h4>My Skills</h4>
@@ -52,15 +80,13 @@
             </div>
         </div>
 
-        
-
         <!-- PROFILE PAGE -->
         <div id="profile" class="page-tab" style="display: none;">
             <div class="content-section">
                 <h2>Profile</h2>
-                <p>I'm a passionate leader and student at Asia Pacific College, with a interest in creating functional code with an artistic touch.</p>
+                <p>I'm a passionate leader and student at Asia Pacific College, with an interest in creating functional code with an artistic touch.</p>
                 <h2>Example Works</h2>
-                <div class ="pop-box">
+                <div class="pop-box">
                     <p>
                         ✦ <a href="https://github.com/tloefparty" target="_blank">GitHub</a> <br>
                         ✦ <a href="https://symjuan.buzz" target="_blank">Domain</a> <br>
@@ -68,7 +94,7 @@
                     </p>
                 </div>
             </div>
-            <img src="https://media1.tenor.com/m/nn8ziucv4-YAAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="width: 400px; height: 300px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px;">
+            <img src="https://media1.tenor.com/m/nn8ziucv4-YAAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="width: 400px; height: 300px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px; display: block; max-width: 100%;">
             <div class="pop-box">
                 <h4>Contact Information</h4>
                 <p>Email: <a href="mailto:sophiaysabeljuan@gmail.com">sophiaysabeljuan@gmail.com</a></p>
@@ -82,7 +108,7 @@
                 <h2>Interests & Hobbies</h2>
                 <p>K-pop, Genshin Impact, Reading, Arts, Solo traveling, and more!</p>
             </div>
-            <img src ="https://media1.tenor.com/m/26PjfxCH4W0AAAAC/mitya-genshin-impact-genshin-impact-mitya.gif" alt="Mitya" class="fit-img" style="width: 400px; height: 230px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px;">
+            <img src="https://media1.tenor.com/m/26PjfxCH4W0AAAAC/mitya-genshin-impact-genshin-impact-mitya.gif" alt="Mitya" class="fit-img" style="width: 400px; height: 230px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px; display: block; max-width: 100%;">
 
             <div class="pop-box">
                 <h4>Fun Stuff</h4>
@@ -98,26 +124,32 @@
         <div class="site-footer">
             <p>&copy; 2024 SYJ Portfolio. All rights reserved for WEBPROG.</p>
         </div>
-    </div>
 
-    <!-- JavaScript for Tab Switching (USED GEMINI FOR THIS)-->
-    <script>
-        function switchTab(tabName) {
+    </div> <!-- End of Main Content -->
+</div>
 
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('profile').style.display = 'none';
-            document.getElementById('interests').style.display = 'none';
+<!-- JavaScript for Starting Screen & Tab Switching -->
+<script>
+    function enterMainPage() {
+        // Hide the start screen
+        document.getElementById('start-screen').style.display = 'none';
+        // Show the main portfolio content container
+        document.getElementById('main-content').style.display = 'block';
+    }
 
-            document.getElementById('nav-home').classList.remove('active');
-            document.getElementById('nav-profile').classList.remove('active');
-            document.getElementById('nav-interests').classList.remove('active');
+    function switchTab(tabName) {
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('profile').style.display = 'none';
+        document.getElementById('interests').style.display = 'none';
 
+        document.getElementById('nav-home').classList.remove('active');
+        document.getElementById('nav-profile').classList.remove('active');
+        document.getElementById('nav-interests').classList.remove('active');
 
-            document.getElementById(tabName).style.display = 'block';
-            document.getElementById('nav-' + tabName).classList.add('active');
-        }
-    </script>
-    </body>
+        document.getElementById(tabName).style.display = 'block';
+        document.getElementById('nav-' + tabName).classList.add('active');
+    }
+</script>
 
 </body>
 </html>

@@ -18,6 +18,47 @@ body {
     padding: 20px;
 }
 
+ /* Starting Screen Styling */
+        #start-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            min-height: 350px;
+        }
+
+        #start-screen h1 {
+            color: #6314ad;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        #start-screen p {
+            color: #581c87;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .enter-btn {
+            background-color: #6314ad;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(99, 20, 173, 0.25);
+        }
+
+        .enter-btn:hover {
+            background-color: #7c3aed;
+            transform: scale(1.05);
+        }
+
 /* Container */
 .site-container {
     background: #ffffff;
