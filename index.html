@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYJ Portfolio</title>
+    <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="style.css"> 
+    <!-- INTERNAL CSS -->
+    <style>
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(243, 232, 255, 0.9), rgba(216, 180, 254, 0.9));
+        }
+    </style>
+</head>
+<body>
+    
+<div class="site-container">
+
+        <!-- Navigation Bar Functionality -->
+        <nav class="site-nav">
+            <button onclick="switchTab('home')" id="nav-home" class="tab-btn active">Home</button>
+            <button onclick="switchTab('profile')" id="nav-profile" class="tab-btn">Profile</button>
+            <button onclick="switchTab('interests')" id="nav-interests" class="tab-btn">Interests</button>
+        </nav>
+
+    <!-- INLINE CSS -->
+        <!-- Header -->
+        <div class="site-header" style="border-bottom: 2px dashed #d8b4fe; padding-bottom: 12px; margin-bottom: 16px;">
+            <h1 style="color: #6314ad; font-size: 1.6rem; margin-bottom: 4px;">WEBPROG</h1>
+            <p class="site-subtitle">✦ portfolio ✦</p>
+        </div>
+
+        <!-- HOME PAGE -->
+        <div id="home" class="page-tab">
+            <div class="content-section">
+                <h2>About Me</h2>
+                <img src="https://scontent.fmnl33-1.fna.fbcdn.net/v/t39.30808-6/871081062_2991859327873293_2549634724851727010_n.avif?stp=dst-avif&cstp=mx800x600&ctp=s800x600&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFIxlIDZT2EMvGsVIkSnGfNpYtbgBjDUs6li1uAGMNSzjIw-3bV8ybSy5Rv2Iwp5VQcuQhT5VnLe1Ets7KRAZEd&_nc_ohc=65dZuhAGJqIQ7kNvwFa370a&_nc_oc=AdpW5ayr9zyhfoJ7S1uJPJCaEpVt3rUIT0ZNUOQMC9Ehz460AD75DirCOZ_1Ys2Suqc&_nc_zt=23&_nc_ht=scontent.fmnl33-1.fna&_nc_gid=iNabMtQpccz_qGgwwAkiEQ&_nc_ss=7b2a8&oh=00_AQQRPjetpiDGuVz_TyKSJ35K52ig9aqPMMWRL4GYzC1ikw&oe=6AF25791" 
+                alt="My Picture" class="fit-img" style="width: 200px; height: 200px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px;">
+                <p>Hello! I'm Ysa, a second-year BSIT student at Asia Pacific College, web developer, and Notion Campus Leader who likes arts, conversing, and coding!</p>
+            </div>
+
+        <img src="https://media1.tenor.com/m/wBWsWVL7EL8AAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img">
+
+
+            <div class="pop-box">
+                <h4>My Skills</h4>
+                <p>✦ <i>ARTS:</i> Photoshop, Illustrator, Canva, Procreate, ClipArt, Gouache, Oil Pastel, Watercolor, Origami, and Journaling <br>
+                    ✦ <i>CODING:</i> C++, JavaScript, Python, OutSystems, HTML, CSS, GitHub, MySQL, and more <br>
+                    ✦ <i>OTHER:</i> Casual Gaming, Public Speaking/Hosting, Leadership, Event Planning, and Marketing
+                </p>
+            </div>
+        </div>
+
+        
+
+        <!-- PROFILE PAGE -->
+        <div id="profile" class="page-tab" style="display: none;">
+            <div class="content-section">
+                <h2>Profile</h2>
+                <p>I'm a passionate leader and student at Asia Pacific College, with a interest in creating functional code with an artistic touch.</p>
+                <h2>Example Works</h2>
+                <div class ="pop-box">
+                    <p>
+                        ✦ <a href="https://github.com/tloefparty" target="_blank">GitHub</a> <br>
+                        ✦ <a href="https://symjuan.buzz" target="_blank">Domain</a> <br>
+                        ✦ <a href="https://www.linkedin.com/in/ezblun/" target="_blank">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+            <img src="https://media1.tenor.com/m/nn8ziucv4-YAAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="width: 400px; height: 300px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px;">
+            <div class="pop-box">
+                <h4>Contact Information</h4>
+                <p>Email: <a href="mailto:sophiaysabeljuan@gmail.com">sophiaysabeljuan@gmail.com</a></p>
+                <p>Domain: <a href="https://symjuan.buzz" target="_blank">symjuan.buzz</a></p>
+            </div>
+        </div>
+
+        <!-- INTERESTS PAGE -->
+        <div id="interests" class="page-tab" style="display: none;">
+            <div class="content-section">
+                <h2>Interests & Hobbies</h2>
+                <p>K-pop, Genshin Impact, Reading, Arts, Solo traveling, and more!</p>
+            </div>
+            <img src ="https://media1.tenor.com/m/26PjfxCH4W0AAAAC/mitya-genshin-impact-genshin-impact-mitya.gif" alt="Mitya" class="fit-img" style="width: 400px; height: 230px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px;">
+
+            <div class="pop-box">
+                <h4>Fun Stuff</h4>
+                <p>
+                    <b>I pulled c1 mitya in under 70 pulls.</b> I also finished the new archon quest in genshin within a day with the world quests counted. 
+                    I also like to read and write, and I have a lot of notebooks for journaling and writing stories. I also like to draw and paint, 
+                    and I have a lot of art supplies for that. I also like to travel, and I have been to a few places alone.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="site-footer">
+            <p>&copy; 2024 SYJ Portfolio. All rights reserved for WEBPROG.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Tab Switching (USED GEMINI FOR THIS)-->
+    <script>
+        function switchTab(tabName) {
+
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('profile').style.display = 'none';
+            document.getElementById('interests').style.display = 'none';
+
+            document.getElementById('nav-home').classList.remove('active');
+            document.getElementById('nav-profile').classList.remove('active');
+            document.getElementById('nav-interests').classList.remove('active');
+
+
+            document.getElementById(tabName).style.display = 'block';
+            document.getElementById('nav-' + tabName).classList.add('active');
+        }
+    </script>
+    </body>
+
+</body>
+</html>
