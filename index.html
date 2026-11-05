@@ -12,31 +12,36 @@
             background: linear-gradient(135deg, rgba(243, 232, 255, 0.9), rgba(216, 180, 254, 0.9));
         }
     
-    @keyframes fadeOut {
-                from {opacity: 1; transform: translateY(0);}
-                to {opacity: 0; transform: translateY(-20px);}
-            }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
 
-            .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
-            .fade-out { animation: fadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
+        @keyframes fadeOut {
+            from {opacity: 1; transform: translateY(0);}
+            to {opacity: 0; transform: translateY(-20px);}
+        }
 
-            .page-tab {transition: opacity 0.3s ease, transform 0.3s ease;}
-            button, .tab-btn, .enter-btn {transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;cursor: pointer;}
-            button:hover, .tab-btn:hover, .enter-btn:hover { transform: translateY(-2px);filter: brightness(1.05);box-shadow: 0 4px 12px rgba(99, 20, 173, 0.15);}
-            button:active, .tab-btn:active, .enter-btn:active {transform: translateY(1px);}
-            .pop-box, .content-section {transition: transform 0.3s ease, box-shadow 0.3s ease;}
-            .pop-box:hover {transform: translateY(-3px);box-shadow: 0 6px 16px rgba(216, 180, 254, 0.3); }
-            .fit-img {transition: transform 0.4s ease;}
-            .fit-img:hover {transform: scale(1.02);}
-            a { transition: color 0.2s ease;}
-        </style> <!-- USED GEMINI FOR ANIMATION -->
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
+        .fade-out { animation: fadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
+
+        .page-tab {transition: opacity 0.3s ease, transform 0.3s ease;}
+        button, .tab-btn, .enter-btn {transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;cursor: pointer;}
+        button:hover, .tab-btn:hover, .enter-btn:hover { transform: translateY(-2px);filter: brightness(1.05);box-shadow: 0 4px 12px rgba(99, 20, 173, 0.15);}
+        button:active, .tab-btn:active, .enter-btn:active {transform: translateY(1px);}
+        .pop-box, .content-section {transition: transform 0.3s ease, box-shadow 0.3s ease;}
+        .pop-box:hover {transform: translateY(-3px);box-shadow: 0 6px 16px rgba(216, 180, 254, 0.3); }
+        .fit-img {transition: transform 0.4s ease;}
+        .fit-img:hover {transform: scale(1.02);}
+        a { transition: color 0.2s ease;}
+    </style> <!-- Animation (USED GEMINI) -->
 </head>
 <body>
     
 <div class="site-container">
 
     <!-- STARTING SCREEN -->
-    <div id="start-screen">
+    <div id="start-screen" class="fade-in">
         <h1>Welcome to <br>SYJ's Portfolio ✦</h1>
         <p>Click below to enter Ysa's portfolio space.</p>
         <img src="https://media1.tenor.com/m/q2fUipZNALQAAAAC/mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="display: block; margin: 10px auto; max-width: 50%; border-radius: 13px;">
@@ -61,7 +66,7 @@
         </div>
 
         <!-- HOME PAGE -->
-        <div id="home" class="page-tab">
+        <div id="home" class="page-tab fade-in">
             <div class="content-section">
                 <h2>About Me</h2>
                 <img src="https://scontent.fmnl33-1.fna.fbcdn.net/v/t39.30808-6/871081062_2991859327873293_2549634724851727010_n.avif?stp=dst-avif&cstp=mx800x600&ctp=s800x600&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFIxlIDZT2EMvGsVIkSnGfNpYtbgBjDUs6li1uAGMNSzjIw-3bV8ybSy5Rv2Iwp5VQcuQhT5VnLe1Ets7KRAZEd&_nc_ohc=65dZuhAGJqIQ7kNvwFa370a&_nc_oc=AdpW5ayr9zyhfoJ7S1uJPJCaEpVt3rUIT0ZNUOQMC9Ehz460AD75DirCOZ_1Ys2Suqc&_nc_zt=23&_nc_ht=scontent.fmnl33-1.fna&_nc_gid=iNabMtQpccz_qGgwwAkiEQ&_nc_ss=7b2a8&oh=00_AQQRPjetpiDGuVz_TyKSJ35K52ig9aqPMMWRL4GYzC1ikw&oe=6AF25791" 
@@ -122,32 +127,63 @@
 
         <!-- Footer -->
         <div class="site-footer">
-            <p>&copy; 2024 SYJ Portfolio. All rights reserved for WEBPROG.</p>
+            <p> &copy; 2024 SYJ Portfolio. All rights reserved for WEBPROG.</p>
         </div>
 
-    </div> <!-- End of Main Content -->
+    </div>
 </div>
 
-<!-- JavaScript for Starting Screen & Tab Switching -->
+<!-- JavaScript for Starting Screen & Tab Switching with Fade In/Out (USED GEMINI) -->
 <script>
     function enterMainPage() {
-        // Hide the start screen
-        document.getElementById('start-screen').style.display = 'none';
-        // Show the main portfolio content container
-        document.getElementById('main-content').style.display = 'block';
+        const startScreen = document.getElementById('start-screen');
+        startScreen.classList.remove('fade-in');
+        startScreen.classList.add('fade-out');
+        
+        setTimeout(() => {
+            startScreen.style.display = 'none';
+            const mainContent = document.getElementById('main-content');
+            mainContent.style.display = 'block';
+            mainContent.classList.add('fade-in');
+        }, 300);
     }
 
+    let isSwitching = false;
+
     function switchTab(tabName) {
-        document.getElementById('home').style.display = 'none';
-        document.getElementById('profile').style.display = 'none';
-        document.getElementById('interests').style.display = 'none';
+        if (isSwitching) return;
 
-        document.getElementById('nav-home').classList.remove('active');
-        document.getElementById('nav-profile').classList.remove('active');
-        document.getElementById('nav-interests').classList.remove('active');
+        const tabs = ['home', 'profile', 'interests'];
+        const activeTabEl = tabs.map(t => document.getElementById(t)).find(el => el.style.display === 'block');
 
-        document.getElementById(tabName).style.display = 'block';
+        if (activeTabEl && activeTabEl.id === tabName) return;
+
+        isSwitching = true;
+
+        tabs.forEach(t => document.getElementById('nav-' + t).classList.remove('active'));
         document.getElementById('nav-' + tabName).classList.add('active');
+
+        if (activeTabEl) {
+            activeTabEl.classList.remove('fade-in');
+            activeTabEl.classList.add('fade-out');
+
+            setTimeout(() => {
+                activeTabEl.style.display = 'none';
+                activeTabEl.classList.remove('fade-out');
+
+                const nextTabEl = document.getElementById(tabName);
+                nextTabEl.style.display = 'block';
+                nextTabEl.classList.remove('fade-out');
+                nextTabEl.classList.add('fade-in');
+                
+                isSwitching = false;
+            }, 300);
+        } else {
+            const nextTabEl = document.getElementById(tabName);
+            nextTabEl.style.display = 'block';
+            nextTabEl.classList.add('fade-in');
+            isSwitching = false;
+        }
     }
 </script>
 
