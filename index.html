@@ -5,36 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYJ Portfolio</title>
     <!-- EXTERNAL CSS -->
-    <link rel="stylesheet" href="style.css"> 
-    <!-- INTERNAL CSS -->
-    <style>
-        .hero-banner {
-            background: linear-gradient(135deg, rgba(243, 232, 255, 0.9), rgba(216, 180, 254, 0.9));
-        }
-    
-        @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(20px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-
-        @keyframes fadeOut {
-            from {opacity: 1; transform: translateY(0);}
-            to {opacity: 0; transform: translateY(-20px);}
-        }
-
-        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
-        .fade-out { animation: fadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
-
-        .page-tab {transition: opacity 0.3s ease, transform 0.3s ease;}
-        button, .tab-btn, .enter-btn {transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;cursor: pointer;}
-        button:hover, .tab-btn:hover, .enter-btn:hover { transform: translateY(-2px);filter: brightness(1.05);box-shadow: 0 4px 12px rgba(99, 20, 173, 0.15);}
-        button:active, .tab-btn:active, .enter-btn:active {transform: translateY(1px);}
-        .pop-box, .content-section {transition: transform 0.3s ease, box-shadow 0.3s ease;}
-        .pop-box:hover {transform: translateY(-3px);box-shadow: 0 6px 16px rgba(216, 180, 254, 0.3); }
-        .fit-img {transition: transform 0.4s ease;}
-        .fit-img:hover {transform: scale(1.02);}
-        a { transition: color 0.2s ease;}
-    </style> <!-- Animation (USED GEMINI) -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        /* If the visitor already entered, skip the starting screen right away (no flash) */
+        try { if (sessionStorage.getItem('syjEntered') === '1') document.documentElement.classList.add('entered'); } catch (e) {}
+    </script>
 </head>
 <body>
     
@@ -53,9 +28,9 @@
 
         <!-- Navigation Bar Functionality -->
         <nav class="site-nav">
-            <button onclick="switchTab('home')" id="nav-home" class="tab-btn active">Home</button>
-            <button onclick="switchTab('profile')" id="nav-profile" class="tab-btn">Profile</button>
-            <button onclick="switchTab('interests')" id="nav-interests" class="tab-btn">Interests</button>
+            <button onclick="goTo('index.html')" id="nav-home" class="tab-btn active">Home</button>
+            <button onclick="goTo('profile.html')" id="nav-profile" class="tab-btn">Profile</button>
+            <button onclick="goTo('interests.html')" id="nav-interests" class="tab-btn">Interests</button>
         </nav>
 
         <!-- INLINE CSS -->
@@ -85,46 +60,6 @@
             </div>
         </div>
 
-        <!-- PROFILE PAGE -->
-        <div id="profile" class="page-tab" style="display: none;">
-            <div class="content-section">
-                <h2>Profile</h2>
-                <p>I'm a passionate leader and student at Asia Pacific College, with an interest in creating functional code with an artistic touch.</p>
-                <h2>Example Works</h2>
-                <div class="pop-box">
-                    <p>
-                        ✦ <a href="https://github.com/tloefparty" target="_blank">GitHub</a> <br>
-                        ✦ <a href="https://symjuan.buzz" target="_blank">Domain</a> <br>
-                        ✦ <a href="https://www.linkedin.com/in/ezblun/" target="_blank">LinkedIn</a>
-                    </p>
-                </div>
-            </div>
-            <img src="https://media1.tenor.com/m/nn8ziucv4-YAAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="width: 400px; height: 300px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px; display: block; max-width: 100%;">
-            <div class="pop-box">
-                <h4>Contact Information</h4>
-                <p>Email: <a href="mailto:sophiaysabeljuan@gmail.com">sophiaysabeljuan@gmail.com</a></p>
-                <p>Domain: <a href="https://symjuan.buzz" target="_blank">symjuan.buzz</a></p>
-            </div>
-        </div>
-
-        <!-- INTERESTS PAGE -->
-        <div id="interests" class="page-tab" style="display: none;">
-            <div class="content-section">
-                <h2>Interests & Hobbies</h2>
-                <p>K-pop, Genshin Impact, Reading, Arts, Solo traveling, and more!</p>
-            </div>
-            <img src="https://media1.tenor.com/m/26PjfxCH4W0AAAAC/mitya-genshin-impact-genshin-impact-mitya.gif" alt="Mitya" class="fit-img" style="width: 400px; height: 230px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px; display: block; max-width: 100%;">
-
-            <div class="pop-box">
-                <h4>Fun Stuff</h4>
-                <p>
-                    <b>I pulled c1 mitya in under 70 pulls.</b> I also finished the new archon quest in genshin within a day with the world quests counted. 
-                    I also like to read and write, and I have a lot of notebooks for journaling and writing stories. I also like to draw and paint, 
-                    and I have a lot of art supplies for that. I also like to travel, and I have been to a few places alone.
-                </p>
-            </div>
-        </div>
-
         <!-- Footer -->
         <div class="site-footer">
             <p> &copy; 2024 SYJ Portfolio. All rights reserved for WEBPROG.</p>
@@ -133,9 +68,10 @@
     </div>
 </div>
 
-<!-- JavaScript for Starting Screen & Tab Switching with Fade In/Out (USED GEMINI) -->
+<!-- JavaScript for Starting Screen & Page Transitions with Fade In/Out -->
 <script>
     function enterMainPage() {
+        try { sessionStorage.setItem('syjEntered', '1'); } catch (e) {}
         const startScreen = document.getElementById('start-screen');
         startScreen.classList.remove('fade-in');
         startScreen.classList.add('fade-out');
@@ -150,41 +86,27 @@
 
     let isSwitching = false;
 
-    function switchTab(tabName) {
+    function goTo(url) {
         if (isSwitching) return;
-
-        const tabs = ['home', 'profile', 'interests'];
-        const activeTabEl = tabs.map(t => document.getElementById(t)).find(el => el.style.display === 'block');
-
-        if (activeTabEl && activeTabEl.id === tabName) return;
+        if (url === 'index.html') return; // already on this page
 
         isSwitching = true;
+        const currentTab = document.querySelector('.page-tab');
+        currentTab.classList.remove('fade-in');
+        currentTab.classList.add('fade-out');
 
-        tabs.forEach(t => document.getElementById('nav-' + t).classList.remove('active'));
-        document.getElementById('nav-' + tabName).classList.add('active');
-
-        if (activeTabEl) {
-            activeTabEl.classList.remove('fade-in');
-            activeTabEl.classList.add('fade-out');
-
-            setTimeout(() => {
-                activeTabEl.style.display = 'none';
-                activeTabEl.classList.remove('fade-out');
-
-                const nextTabEl = document.getElementById(tabName);
-                nextTabEl.style.display = 'block';
-                nextTabEl.classList.remove('fade-out');
-                nextTabEl.classList.add('fade-in');
-                
-                isSwitching = false;
-            }, 300);
-        } else {
-            const nextTabEl = document.getElementById(tabName);
-            nextTabEl.style.display = 'block';
-            nextTabEl.classList.add('fade-in');
-            isSwitching = false;
-        }
+        setTimeout(() => { window.location.href = url; }, 300);
     }
+
+    // Reset state when returning via the browser's back/forward buttons
+    window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+            isSwitching = false;
+            const tab = document.querySelector('.page-tab');
+            tab.classList.remove('fade-out');
+            tab.classList.add('fade-in');
+        }
+    });
 </script>
 
 </body>

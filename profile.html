@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYJ Portfolio</title>
+    <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        /* Visiting any inner page counts as having entered the portfolio */
+        try { sessionStorage.setItem('syjEntered', '1'); } catch (e) {}
+    </script>
+</head>
+<body>
+    
+<div class="site-container">
+
+    <!-- MAIN PORTFOLIO CONTENT  -->
+    <div id="main-content">
+
+        <!-- Navigation Bar Functionality -->
+        <nav class="site-nav">
+            <button onclick="goTo('index.html')" id="nav-home" class="tab-btn">Home</button>
+            <button onclick="goTo('profile.html')" id="nav-profile" class="tab-btn active">Profile</button>
+            <button onclick="goTo('interests.html')" id="nav-interests" class="tab-btn">Interests</button>
+        </nav>
+
+        <!-- INLINE CSS -->
+        <!-- Header -->
+        <div class="site-header" style="border-bottom: 2px dashed #d8b4fe; padding-bottom: 12px; margin-bottom: 16px;">
+            <h1 style="color: #6314ad; font-size: 1.6rem; margin-bottom: 4px;">WEBPROG</h1>
+            <p class="site-subtitle">✦ portfolio ✦</p>
+        </div>
+
+        <!-- PROFILE PAGE -->
+        <div id="profile" class="page-tab fade-in">
+            <div class="content-section">
+                <h2>Profile</h2>
+                <p>I'm a passionate leader and student at Asia Pacific College, with an interest in creating functional code with an artistic touch.</p>
+                <h2>Example Works</h2>
+                <div class="pop-box">
+                    <p>
+                        ✦ <a href="https://github.com/tloefparty" target="_blank">GitHub</a> <br>
+                        ✦ <a href="https://symjuan.buzz" target="_blank">Domain</a> <br>
+                        ✦ <a href="https://www.linkedin.com/in/ezblun/" target="_blank">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+            <img src="https://media1.tenor.com/m/nn8ziucv4-YAAAAC/mitya-mitya-genshin.gif" alt="Mitya ULT" class="fit-img" style="width: 400px; height: 300px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px; display: block; max-width: 100%;">
+            <div class="pop-box">
+                <h4>Contact Information</h4>
+                <p>Email: <a href="mailto:sophiaysabeljuan@gmail.com">sophiaysabeljuan@gmail.com</a></p>
+                <p>Domain: <a href="https://symjuan.buzz" target="_blank">symjuan.buzz</a></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="site-footer">
+            <p> &copy; 2024 SYJ Portfolio. All rights reserved for WEBPROG.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- JavaScript for Page Transitions with Fade In/Out -->
+<script>
+    let isSwitching = false;
+
+    function goTo(url) {
+        if (isSwitching) return;
+        if (url === 'profile.html') return; // already on this page
+
+        isSwitching = true;
+        const currentTab = document.querySelector('.page-tab');
+        currentTab.classList.remove('fade-in');
+        currentTab.classList.add('fade-out');
+
+        setTimeout(() => { window.location.href = url; }, 300);
+    }
+
+    // Reset state when returning via the browser's back/forward buttons
+    window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+            isSwitching = false;
+            const tab = document.querySelector('.page-tab');
+            tab.classList.remove('fade-out');
+            tab.classList.add('fade-in');
+        }
+    });
+</script>
+
+</body>
+</html>

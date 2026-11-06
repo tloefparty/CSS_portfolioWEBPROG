@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYJ Portfolio</title>
+    <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        /* Visiting any inner page counts as having entered the portfolio */
+        try { sessionStorage.setItem('syjEntered', '1'); } catch (e) {}
+    </script>
+</head>
+<body>
+    
+<div class="site-container">
+
+    <!-- MAIN PORTFOLIO CONTENT  -->
+    <div id="main-content">
+
+        <!-- Navigation Bar Functionality -->
+        <nav class="site-nav">
+            <button onclick="goTo('index.html')" id="nav-home" class="tab-btn">Home</button>
+            <button onclick="goTo('profile.html')" id="nav-profile" class="tab-btn">Profile</button>
+            <button onclick="goTo('interests.html')" id="nav-interests" class="tab-btn active">Interests</button>
+        </nav>
+
+        <!-- INLINE CSS -->
+        <!-- Header -->
+        <div class="site-header" style="border-bottom: 2px dashed #d8b4fe; padding-bottom: 12px; margin-bottom: 16px;">
+            <h1 style="color: #6314ad; font-size: 1.6rem; margin-bottom: 4px;">WEBPROG</h1>
+            <p class="site-subtitle">✦ portfolio ✦</p>
+        </div>
+
+        <!-- INTERESTS PAGE -->
+        <div id="interests" class="page-tab fade-in">
+            <div class="content-section">
+                <h2>Interests & Hobbies</h2>
+                <p>K-pop, Genshin Impact, Reading, Arts, Solo traveling, and more!</p>
+            </div>
+            <img src="https://media1.tenor.com/m/26PjfxCH4W0AAAAC/mitya-genshin-impact-genshin-impact-mitya.gif" alt="Mitya" class="fit-img" style="width: 400px; height: 230px; margin: 0 auto; border-radius: 8px; margin-bottom: 12px; display: block; max-width: 100%;">
+
+            <div class="pop-box">
+                <h4>Fun Stuff</h4>
+                <p>
+                    <b>I pulled c1 mitya in under 70 pulls.</b> I also finished the new archon quest in genshin within a day with the world quests counted. 
+                    I also like to read and write, and I have a lot of notebooks for journaling and writing stories. I also like to draw and paint, 
+                    and I have a lot of art supplies for that. I also like to travel, and I have been to a few places alone.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="site-footer">
+            <p> &copy; 2024 SYJ Portfolio. All rights reserved for WEBPROG.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- JavaScript for Page Transitions with Fade In/Out -->
+<script>
+    let isSwitching = false;
+
+    function goTo(url) {
+        if (isSwitching) return;
+        if (url === 'interests.html') return; // already on this page
+
+        isSwitching = true;
+        const currentTab = document.querySelector('.page-tab');
+        currentTab.classList.remove('fade-in');
+        currentTab.classList.add('fade-out');
+
+        setTimeout(() => { window.location.href = url; }, 300);
+    }
+
+    // Reset state when returning via the browser's back/forward buttons
+    window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+            isSwitching = false;
+            const tab = document.querySelector('.page-tab');
+            tab.classList.remove('fade-out');
+            tab.classList.add('fade-in');
+        }
+    });
+</script>
+
+</body>
+</html>

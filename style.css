@@ -180,3 +180,35 @@ body {
     color: #9ca3af;
     margin-top: 10px;
 }
+
+/* ===== Animations (previously internal CSS in index.html) ===== */
+.hero-banner {
+    background: linear-gradient(135deg, rgba(243, 232, 255, 0.9), rgba(216, 180, 254, 0.9));
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1; transform: translateY(0);}
+    to {opacity: 0; transform: translateY(-20px);}
+}
+
+.fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
+.fade-out { animation: fadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;}
+
+.page-tab {transition: opacity 0.3s ease, transform 0.3s ease;}
+button, .tab-btn, .enter-btn {transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;cursor: pointer;}
+button:hover, .tab-btn:hover, .enter-btn:hover { transform: translateY(-2px);filter: brightness(1.05);box-shadow: 0 4px 12px rgba(99, 20, 173, 0.15);}
+button:active, .tab-btn:active, .enter-btn:active {transform: translateY(1px);}
+.pop-box, .content-section {transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.pop-box:hover {transform: translateY(-3px);box-shadow: 0 6px 16px rgba(216, 180, 254, 0.3); }
+.fit-img {transition: transform 0.4s ease;}
+.fit-img:hover {transform: scale(1.02);}
+a { transition: color 0.2s ease;}
+
+/* Skip the start screen once the visitor has already entered (index.html only) */
+html.entered #start-screen { display: none !important; }
+html.entered #main-content { display: block !important; }
